@@ -1,5 +1,10 @@
-# React-Webpack-Starter
-Basic react webpack starter with a bootstrap css file
+# Simple To Do List
+Simple react to do list with Bootstrap
 
-<code>npm run build</code>
-<code>npm run start</code>
+Hover over todos and click on `x` to delete them.
+Add new todos and come back later, the list will be saved in local storage.
+
+```
+npm run build
+npm run start
+```
