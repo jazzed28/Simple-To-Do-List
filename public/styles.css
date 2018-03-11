@@ -4,3 +4,18 @@ body {
 
 #root {
   text-align: center; }
+
+.input-group {
+  margin: 20px 0 50px; }
+
+.input-group-btn button {
+  cursor: pointer; }
+
+.removeBtn {
+  float: right;
+  width: 25px;
+  height: 25px;
+  background-color: #ccc;
+  color: #fff;
+  border-radius: 12px;
+  cursor: pointer; }
