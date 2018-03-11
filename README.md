@@ -4,6 +4,8 @@ Simple react to do list with Bootstrap
 Hover over todos and click on `x` to delete them.
 Add new todos and come back later, the list will be saved in local storage.
 
+![Screenshot](capture-todo.jpeg)
+
 ```
 npm install
 npm run build
