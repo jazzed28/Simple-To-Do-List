@@ -1,8 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
-const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const OptimizeCSSAssets = require('optimize-css-assets-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 let config = {
   entry: './src/index.js',
@@ -25,10 +23,13 @@ let config = {
       },
       {
         test: /\.scss$/,
-        use: ['css-hot-loader'].concat(ExtractTextWebpackPlugin.extract({
-          fallback: 'style-loader',
-          use: ['css-loader', 'sass-loader', 'postcss-loader']
-        }))
+        use: [
+          'style-loader',
+          MiniCssExtractPlugin.loader,
+          "css-loader",
+          "postcss-loader",
+          "sass-loader"
+        ]
       },
       {
         test: /\.jsx$/,
@@ -61,7 +62,11 @@ let config = {
     ]
   },
   plugins: [
-    new ExtractTextWebpackPlugin('styles.css')
+    new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: "styles.css"
+    })
   ],
   devServer: {
     contentBase: path.resolve(__dirname, './public'),
@@ -74,9 +79,9 @@ let config = {
 
 module.exports = config;
 
-if (process.env.NODE_ENV === 'production') {
-  module.exports.plugins.push(
-    new webpack.optimize.UglifyJsPlugin(),
-    new OptimizeCSSAssets()
-  );
-}
+// if (process.env.NODE_ENV === 'production') {
+//   module.exports.plugins.push(
+//     new webpack.optimize.UglifyJsPlugin(),
+//     new OptimizeCSSAssets()
+//   );
+// }
